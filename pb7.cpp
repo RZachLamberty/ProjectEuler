@@ -9,10 +9,24 @@
 
 using namespace std;
 
+/*
+ *  The "sieve" approach is best when you know roughly how many primes you
+ *  need BUT (more importantly) want to have frequent lookups of whether or not
+ *  something is prime
+ *
+ *  I would recommend, for this problem, filling in the mask (primes) as you
+ *  go up, rather than in advance. For a given N, cycle through all primes less
+ *  than sqrt(N) and see if N is divisible. If it is, then mark the primes
+ *
+ *  That is to say, mark products only when you have to, rather than ahead of
+ *  time.
+ */
+
 const int N0=2000000;
 int pb7(int n)
 {
   int primes[N0]={};
+  // std:: is unecessary if you have used namespace std
   std::fill_n(primes,N0,1);
   primes[0]=0;
   primes[1]=0;

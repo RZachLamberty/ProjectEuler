@@ -26,10 +26,13 @@ int pb4()
           sum=digits[0];
           for( int k=1; k<Ndigi; k++ )
             {
+                // You're calculating this 1000 * 1000 times -- you could make
+                // an array or list to do a lookup instead and save the time
               digits[k]=(a%int(pow(10,k+1))-sum)/pow(10,k);
               sum+=pow(10,k)*digits[k];
             }
           //check whether a is a palindrome
+          // awwwww yeah ternary operators
           int Ncheck = (Ndigi%2==0) ? Ndigi/2 : (Ndigi-1)/2;
           bool pal=true;
           for( int k=0; k<=Ncheck; k++ )
@@ -40,6 +43,8 @@ int pb4()
                   break;
                 }
             }
+            // there is usually a max function -- if there is, no need to check
+            // if a > maxProd. replace both pieces with a = max(a, maxProd)
           if( pal==true && a>maxProd ) maxProd=a;
         }
     }
